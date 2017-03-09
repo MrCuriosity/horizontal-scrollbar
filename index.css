@@ -1,0 +1,47 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+html, body {
+	height: 100%;
+}
+
+#wrapper {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	overflow: hidden;
+}
+#content {
+	padding: 40px 20px;
+	position: absolute;
+}
+#scroll_bar {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: 30px;
+	background-color: rgba(120, 120, 120, 1);
+}
+#scroll_button {
+	display: block;
+	position: fixed;
+	left: 0;
+	bottom: 1px;
+	width: 100px;
+	height: 28px;
+	background-color: rgba(230, 230, 230, 1);
+	outline: 1px solid rgba(50, 50, 50, 1);
+}
+
+// ————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
+#wrapper {
+	outline: 1px dotted red;
+}
+#content {
+	outline: 1px dotted green;
+}
