@@ -17,9 +17,9 @@ document.addEventListener('DOMContentLoaded', ()=> {
 		var speed = 20;
 		var distance = 0;
 		if (getDirection()) {
-			distance = oSbar.offsetLeft - speed;
+			distance = oSbtn.offsetLeft - speed;
 		} else {
-			distance = oSbar.offsetLeft + speed;
+			distance = oSbtn.offsetLeft + speed;
 		}
 		setPosition(distance);
 		oe.preventDefault && oe.preventDefault();
