@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
-	<title>flexible-article-demo</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<title>horizontal-scrollbar</title>
 	<link rel="stylesheet" type="text/css" href="./index.css">
 </head>
 <body>
@@ -53,6 +55,26 @@
 			<br>
 			<p>
 				重要的是VPC才是对多租户网络隔离的最佳方式（至少目前是这样的）。VPC就像可以让企业自由定义自己的内网，就像在私有云里玩的那样。
+			</p>
+			<br>
+			<p>
+				在VPC上，安全组包括网络ACL就可以成为一个非常不错的补充了。VPC这个基础设施还可以让你配置自己的路由表什么的。总之，这是一个基础设施，在上面可以非常方便的扩展很多东西，比如用户可以用VPN接入等等（这个网络方案的扩展性是很强的）
+			</p>
+			<br>
+			<p>
+				我认为，VPC这个事应该是默认为用户开启的，是在VPC上配置安全组，而不是提供VPC和安全组两套可以相互独立网络方案。然而，阿里云不是这样的。（原因不说，省得又是一堆口水）
+			</p>
+			<br>
+			<p>
+				AWS上是默认是分配一个default的VPC的，AWS的VPC是免费的，不过VPN是收费的。
+			</p>
+			<br>
+			<p>
+				（我建议阿里云参考一下AWS，但有个似乎像是阿里云的小同学评论里回复我说——AWS懂网络么？……）
+			</p>
+			<br>
+			<p>
+				虽然公有云可以帮助企业降低运维成本，但不可否认，企业上公有云是有一定的风险的，如果我记忆准确的话，我记得我在Amazon里看到的一个曾经的一个说法：如果不做 VPC 和 IAM 这两个东西，企业将无法上云，AWS 也就不用做了。具体原因不在这里展开了。
 			</p>
 			<br>
 			<p>
