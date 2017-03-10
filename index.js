@@ -37,6 +37,8 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	/** 鼠标滚动(触摸板滚动) */
 	function onMouseWheel(e, pageyOnStart) {
+		var oe = e || window.event;
+
 		var speed = isMobile() ? 2 : 20;
 
 		/** 滚动方向 */ // true -> 向下滑动, false -> 向上滑动
