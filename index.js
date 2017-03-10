@@ -21,7 +21,8 @@ document.addEventListener('DOMContentLoaded', function() {
 			onDrag(e);
 		}, false)
 	}
-
+	
+	/** 移动端滚动 */
 	function onTouchStart(e) {
 		var pageyOnStart = e.touches[0].pageY;
 		content.addEventListener('touchmove', onTouchMove, false)
@@ -33,24 +34,17 @@ document.addEventListener('DOMContentLoaded', function() {
 			content.removeEventListener('touchend', onTouchEnd, false)
 		}
 	}
+
 	/** 鼠标滚动(触摸板滚动) */
 	function onMouseWheel(e, pageyOnStart) {
 		var speed = isMobile() ? 2 : 20;
-		var distance = 0;
-		var direction;
-		/** 滚动方向 */
-		if (isMobile()) {
-			direction =	Boolean((pageyOnStart - e.changedTouches[0].pageY) < 0);
-		} else {
-			var oe = e || window.event;
-			direction = oe.deltaY > 0;// true -> 向下滑动, false -> 向上滑动
-		}
 
-		if (direction) {
-			distance = eleSbtn.offsetLeft - speed;
-		} else {
-			distance = eleSbtn.offsetLeft + speed;
-		}
+		/** 滚动方向 */ // true -> 向下滑动, false -> 向上滑动
+		var direction = isMobile() ? Boolean((pageyOnStart - e.changedTouches[0].pageY) < 0) : oe.deltaY > 0;
+		
+		/** 滑块的滑动结束距离 */
+		var distance = direction ? eleSbtn.offsetLeft - speed : eleSbtn.offsetLeft + speed;
+		
 		setPosition(distance);
 		oe.preventDefault && oe.preventDefault();
 		return false;
@@ -59,8 +53,9 @@ document.addEventListener('DOMContentLoaded', function() {
 	/** 滑块拖拽 */
 	function onDrag(e) {
 		var oe = e || window.event;
-		
-		var eTargetTosBtnLeft = oe.clientX - eleSbtn.offsetLeft;// 事件源距滑块左侧的距离
+		// 事件源距滑块左侧的距离
+		var eTargetTosBtnLeft = isMobile() ? oe.changedTouches[0].clientX - eleSbtn.offsetLeft : oe.clientX - eleSbtn.offsetLeft;
+
 		document.addEventListener('mousemove', onMouseMove, false);
 		document.addEventListener('mouseup', onMouseUp, false);
 		document.addEventListener('touchmove', onMouseMove, false);
@@ -68,15 +63,15 @@ document.addEventListener('DOMContentLoaded', function() {
 		
 		function onMouseMove(e) {
 			var oe = e || window.event;
-			var distance = oe.clientX - eTargetTosBtnLeft;
+			var distance = isMobile() ? oe.changedTouches[0].clientX - eTargetTosBtnLeft : oe.clientX - eTargetTosBtnLeft;
 			setPosition(distance);
 		}
 
 		function onMouseUp() {
-			document.removeEventListener('mousemove', onMouseMove, false)
-			document.removeEventListener('mouseup', onMouseUp, false)
-			document.removeEventListener('touchmove', onMouseMove, false)
-			document.removeEventListener('touchend', onMouseUp, false)
+			document.removeEventListener('mousemove', onMouseMove, false);
+			document.removeEventListener('mouseup', onMouseUp, false);
+			document.removeEventListener('touchmove', onMouseMove, false);
+			document.removeEventListener('touchend', onMouseUp, false);
 		}
 	}
 
