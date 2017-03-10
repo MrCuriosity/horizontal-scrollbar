@@ -42,12 +42,10 @@ body {
 	height: 48px;
 	background-color: rgba(230, 230, 230, 1);
 	outline: 1px solid rgba(50, 50, 50, 1);
-}
-
-// ————————————————————————————————————————————————————————————————————————————————————————————————————————————————————————
-#wrapper {
-	outline: 1px dotted red;
-}
-#content {
-	outline: 1px dotted green;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
 }

@@ -10,16 +10,10 @@ document.addEventListener('DOMContentLoaded', function() {
 
 	if (isMobile()) {
 		content.addEventListener('touchstart', onTouchStart, false);
-		eleSbtn.addEventListener('touchstart', function(e) {
-			onDrag(e);
-		}, false)
+		eleSbtn.addEventListener('touchstart', onDrag, false);
 	} else {
-		wrapper.addEventListener('wheel', function(e) {
-			onMouseWheel(e);
-		}, false)
-		eleSbtn.addEventListener('mousedown', function(e) {
-			onDrag(e);
-		}, false)
+		wrapper.addEventListener('wheel', onMouseWheel, false);
+		eleSbtn.addEventListener('mousedown', onDrag, false);
 	}
 	
 	/** 移动端滚动 */
@@ -41,10 +35,11 @@ document.addEventListener('DOMContentLoaded', function() {
 
 		var speed = isMobile() ? 2 : 20;
 
-		/** 滚动方向 */ // true -> 向下滑动, false -> 向上滑动
+		/** 滚动方向 */
+		/** true -> 向下滑动, false -> 向上滑动 */
 		var direction = isMobile() ? Boolean((pageyOnStart - e.changedTouches[0].pageY) < 0) : oe.deltaY > 0;
 		
-		/** 滑块的滑动结束距离 */
+		/** 根据滑动方向设置滑块移动增量 */
 		var distance = direction ? eleSbtn.offsetLeft - speed : eleSbtn.offsetLeft + speed;
 		
 		setPosition(distance);
