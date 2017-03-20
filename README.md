@@ -13,7 +13,7 @@
 
 > 根据userAgent来判断用touchEvent | mouseEvent
 
-###USAGE
+### USAGE
 ```sh
 git clone git@github.com:MrCuriosity/horizontal-scrollbar.git
 ```
